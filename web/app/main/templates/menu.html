@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" ui-sref="main.home">Inventory Tracker</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNav">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="glyphicon glyphicon-user"></span>
+						<b>Welcome, {{ ctrl.getUser() }}!</b>
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+					<ul class="dropdown-menu">				
+						<li class=""><a ng-click="ctrl.logout()" ui-sref="login">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li ng-class="{ active: ctrl.isActive('/home') }"><a ng-show="ctrl.isLogin()" ui-sref="main.home">Home</a></li>
+				<li ng-class="{ active: ctrl.isActive('/users') }"><a ng-show="ctrl.isLogin()" ui-sref="main.users">Users</a></li>
+				<li ng-class="{ active: ctrl.isActive('/items') }"><a ng-show="ctrl.isLogin()" ui-sref="main.items">Items</a></li>
+				<li ng-class="{ active: ctrl.isActive('/login') }" ng-hide="ctrl.isLogin()"><a ui-sref="login">Login</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div ui-view="pageContent"></div>

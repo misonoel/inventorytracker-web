@@ -1,0 +1,247 @@
+body {
+	background-color: #cccccc !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+select.form-control,
+textarea,
+textarea.form-control {
+	margin: 0;
+	background: #f8f8f8;
+	border: 2px solid #ddd;
+	/* color: #888; */
+}
+
+textarea,
+textarea.form-control {
+	resize: none;
+}
+
+.table {
+	background: #fff;
+	-moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; border-radius: 5px 5px 5px 5px;
+}
+
+.form-control:focus {
+	border-color: rgba(81, 203, 238, 1) !important;
+	/* border-color: rgb(102, 175, 233) !important; */ /* <-- original color */
+}
+
+.input-group-addon {
+	border: 2px solid #ddd !important;
+	border-left: 0px !important;
+}
+
+.padding-bottom {
+	padding-bottom: 5px;
+}
+
+.modal-title {
+	display: inline;
+}
+
+.modal-body {
+    /* max-height: calc(100vh - 200px); */
+    max-height: calc(100vh - 185px);
+    overflow-y: auto;
+}
+
+/* ----- Start of Modal custom header ----- */
+
+.modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+.modal-header-warning {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #f0ad4e;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+.modal-header-info {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5bc0de;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+.modal-header-primary {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #428bca;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+/* ----- End of Modal custom header ----- */
+
+/* ----- Start of Input addon custom color ----- */
+
+.input-group-addon.primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 118, 177);
+    /* border-color: rgb(50, 118, 177) !important; */
+    border-color: rgb(40, 94, 142) !important;
+}
+
+.input-group-addon.success {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 184, 92);
+    /* border-color: rgb(92, 184, 92) !important; */
+    border-color: rgb(76, 174, 76) !important;
+}
+
+.input-group-addon.info {
+    color: rgb(255, 255, 255);
+    background-color: rgb(57, 179, 215);
+    /* border-color: rgb(57, 179, 215) !important; */
+    border-color: rgb(38, 154, 188) !important;
+}
+
+.input-group-addon.warning {
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 173, 78);
+    /* border-color: rgb(240, 173, 78) !important; */
+    border-color: rgb(238, 162, 54) !important;
+}
+
+.input-group-addon.danger {
+    color: rgb(255, 255, 255);
+    background-color: rgb(217, 83, 79);
+    /* border-color: rgb(217, 83, 79) !important; */
+    border-color: rgb(212, 63, 58) !important;
+}
+
+/* ----- End of Input addon custom color ----- */
+
+/* ----- Start of Login form ----- */
+
+.form-box {
+	padding-top: 5%;
+	margin-top: 35px;
+}
+
+.form-top {
+	overflow: hidden;
+	padding: 0 25px 0 25px;
+	background: #fff;
+	-moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0;
+	text-align: left;
+}
+
+.form-top-left {
+	float: left;
+	width: 75%;
+	padding-top: 25px;
+}
+
+.form-top-left h3 {
+	margin-top: 0;
+}
+
+.form-top-right {
+	float: left;
+	width: 25%;
+	padding-top: 5px;
+	font-size: 66px;
+	color: #ddd;
+	line-height: 100px;
+	text-align: right;
+}
+
+.form-bottom {
+	padding: 25px 25px 30px 25px;
+	background: #eee;
+	-moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; border-radius: 0 0 5px 5px;
+}
+
+.login-input-group-addon {
+	border: 3px solid #ddd !important;
+	border-left: 0px !important;
+}
+
+/* .form-control:focus + .login-input-group-addon {
+	border-color: rgba(81, 203, 238, 1) !important;
+} */
+
+input[type="text"].form-username,
+input[type="password"].form-password {
+	margin: 0;
+	background: #f8f8f8;
+	border: 3px solid #ddd;
+	color: #888;
+}
+
+/* ----- End of Login form ----- */
+
+/* ----- Start of User table ----- */
+
+/* @media all and (max-width: 768px),
+only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px),
+only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px),
+only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px),
+only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px),
+only screen and (min-resolution: 192dpi) and (max-width: 1024px),
+only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
+	.table-username, tr td:nth-child(4) {
+		display:none;
+		visibility:hidden;
+	}
+	.table-email, tr td:nth-child(5) {
+		display:none;
+		visibility:hidden;
+	}
+	.table-addUser, tr td:nth-child(6) {
+		display:none;
+		visibility:hidden;
+	}
+	.table-save, tr td:nth-child(7) {
+		display:none;
+		visibility:hidden;
+	}
+} */
+
+/* ----- End of User table ----- */

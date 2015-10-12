@@ -1,0 +1,94 @@
+<div class="container-fluid">
+	<div class="text-right padding-bottom">
+		<button class="btn btn-primary" data-toggle="modal" data-target="#add-item-modal"><i class="glyphicon glyphicon-plus"></i> Add Item</button>
+	</div>
+	<div class="input-group padding-bottom">
+		<input type="text" class="form-control input-lg" placeholder="Search..." ng-model="ctrl.data.search">
+		<a class="btn btn-info input-group-addon info"><i class="glyphicon glyphicon-search"></i></a>
+		<!-- <a class="btn btn-primary input-group-addon primary" data-toggle="modal" data-target="#add-item-modal">
+			<i class="glyphicon glyphicon-plus"></i> 
+			<span>Add Item</span>
+		</a> -->
+	</div>
+	<div class="table-responsive">
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th class="">#</th>
+					<th class="col-md-2"><a href="" ng-click="orderByField='itemname'; sort = !sort">Item Name</a></th>
+					<th class="col-md-2"><a href="" ng-click="orderByField='owner'; sort = !sort">Owner</a></th>
+					<th class="col-md-2"><a href="" ng-click="orderByField='description'; sort = !sort">Description</a></th>
+					<th class="col-md-3"><a href="" ng-click="show = !show"><i class="glyphicon glyphicon-plus"></i> Add Item</a></th>
+					<th class="col-md-3"><a href="" data-toggle="modal" data-target="#add-item-modal"><i class="glyphicon glyphicon-plus"></i> Add Item</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-show="show">
+					<th>-</th>
+					<td><input type="text" class="form-control input-sm" placeholder="Item Name"></td>
+					<td><input type="text" class="form-control input-sm" placeholder="Owner"></td>
+					<td><input type="text" class="form-control input-sm" placeholder="Description"></td>
+					<td><input type="submit" class="btn btn-primary btn-block btn-sm" value="Add" ng-click="show = !show"></td>
+					<td></td>
+				</tr>
+				<tr ng-repeat="item in ctrl.items | filter: searchKeyword | orderBy:orderByField:sort">
+					<th>{{ $index + 1 }}</th>
+					<td>{{ item.itemname }}</td>
+					<td>{{ item.owner}}</td>
+					<td>{{ item.description }}</td>
+					<td>{{ item.description }}</td>
+					<td>
+						<div class="">
+							<a href="" ng-click="ctrl.viewItem(item)"><i class="glyphicon glyphicon-eye-open col-md-2"></i></a>
+							<a href=""><i class="glyphicon glyphicon-edit col-md-2"></i></a>
+							<a href=""><i class="glyphicon glyphicon-remove col-md-2"></i></a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- Start of Add Item Modal -->
+
+<div class="modal fade" id="add-item-modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header modal-header-primary">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Item Details</h4>
+			</div>
+			<form class="form-horizontal" ng-submit="ctrl.addItem()" method="post">
+				<div class="modal-body">
+						<div class="form-group">
+							<label for="fname" class="col-md-4 control-label">Item Name</label>
+							<div class="col-md-7">
+								<input type="text" name="itemname" class="form-control" id="itemname" placeholder="Item Name" ng-model="ctrl.data.itemname">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="fname" class="col-md-4 control-label">Owner</label>
+							<div class="col-md-7">
+								<input type="text" name="itemname" class="form-control" id="itemname" placeholder="Owner" ng-model="ctrl.data.owner">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="description" class="col-md-4 control-label">Description</label>
+							<div class="col-md-7">
+								<textarea rows="4" cols="10" class="col-md-12 col-xs-12 form-control" name="description" id="descrtiption" ng-model="ctrl.data.description"></textarea>
+							</div>
+						</div>
+					</div>
+				<div class="modal-footer">
+					<div class="text-right">
+						<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.clearData()">Cancel</button>
+						<button type="submit" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- End of Add Item Modal -->

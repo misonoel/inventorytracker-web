@@ -1,0 +1,76 @@
+<div class="modal-header modal-header-primary">
+	<button type="button" class="close" ng-click="ctrl.cancel()">&times;</button>
+	<h4 ng-if="ctrl.action === 'add'" class="modal-title">Add User</h4>
+	<h4 ng-if="ctrl.action === 'edit'" class="modal-title">Edit User</h4>
+</div>
+<form class="form-horizontal" ng-submit="ctrl.addUser()" method="post">
+	<div class="modal-body">
+			<div class="form-group">
+				<label for="fname" class="col-md-4 control-label">First Name</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="ctrl.data.firstname" ng-if="ctrl.action === 'add'" 
+						name="firstname" class="form-control" id="fname" placeholder="First Name" required>
+					<input type="text" ng-model="ctrl.data.firstname" ng-init="ctrl.data.firstname = ctrl.user.firstname" 
+						ng-if="ctrl.action == 'edit'" class="form-control" placeholder="{{ ctrl.user.firstname }}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="lname" class="col-md-4 control-label">Last Name</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="ctrl.data.lastname" ng-if="ctrl.action === 'add'" 
+						name="lastname" class="form-control" id="lname" placeholder="Last Name" required>
+					<input type="text" ng-model="ctrl.data.lastname" ng-init="ctrl.data.lastname = ctrl.user.lastname" 
+						ng-if="ctrl.action == 'edit'" class="form-control" placeholder="{{ ctrl.user.lastname }}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="uname" class="col-md-4 control-label">Username</label>
+				<div class="col-md-7">
+					<input type="text" ng-model="ctrl.data.username" ng-if="ctrl.action === 'add'" 
+						name="username" class="form-control" id="uname" placeholder="Username">
+					<input type="text" ng-model="ctrl.data.username" ng-init="ctrl.data.username = ctrl.user.username" 
+						ng-if="ctrl.action == 'edit'" class="form-control" placeholder="{{ ctrl.user.username }}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="mail" class="col-md-4 control-label">Email Address</label>
+				<div class="col-md-7">
+					<input type="email" ng-model="ctrl.data.email" ng-if="ctrl.action === 'add'" 
+						name="email" class="form-control" id="mail" placeholder="Email Address" required>
+					<input type="text" ng-model="ctrl.data.email" ng-init="ctrl.data.email = ctrl.user.email" 
+						ng-if="ctrl.action == 'edit'" class="form-control" placeholder="{{ ctrl.user.email }}" disabled>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="pass" class="col-md-4 control-label">Password</label>
+				<div class="col-md-7">
+					<input type="password" ng-model="ctrl.data.password" ng-if="ctrl.action === 'add'" 
+						name="password" class="form-control" id="pass" placeholder="Password" required>
+					<input type="password" ng-model="ctrl.data.password" ng-init="ctrl.data.password = ctrl.user.password" 
+						ng-if="ctrl.action == 'edit'" class="form-control" placeholder="Password" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="rights" class="col-md-4 control-label">Admin Rights</label>
+				<div class="col-md-7">
+					<select ng-model="ctrl.data.rights" ng-init="ctrl.data.rights = '0'" 
+						ng-if="ctrl.action === 'add'" name="rights" class="form-control" id="rights" required>
+						<option value="0">User</option>
+						<option value="1">Admin</option>
+					</select>
+					<select ng-model="ctrl.data.rights" ng-init="ctrl.data.rights = ctrl.user.rights" 
+						ng-if="ctrl.action === 'edit'" name="rights" class="form-control" id="rights" required>
+						<option value="0">User</option>
+						<option value="1">Admin</option>
+					</select>
+				</div>
+			</div>
+	</div>
+	<div class="modal-footer">
+		<div class="text-right">
+			<button type="button" class="btn btn-default" ng-click="ctrl.cancel()">Cancel</button>
+			<button type="submit" ng-if="ctrl.action === 'add'" class="btn btn-primary" ng-click="ctrl.ok()">Add</button>
+			<button type="submit" ng-if="ctrl.action === 'edit'" class="btn btn-primary" ng-click="ctrl.ok()">Edit</button>
+		</div>
+	</div>
+</form>

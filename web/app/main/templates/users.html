@@ -1,0 +1,140 @@
+<div class="container-fluid">
+	<div class="text-right padding-bottom">
+		<button class="btn btn-primary" ng-click="ctrl.add()"><i class="glyphicon glyphicon-plus"></i> Add User</button>
+	</div>
+	<div class="input-group padding-bottom">
+		<input type="text" class="form-control input-lg" placeholder="Search..." ng-model="ctrl.data.search">
+		<a class="btn btn-info input-group-addon info"><i class="glyphicon glyphicon-search"></i></a>
+		<!-- <a class="btn btn-primary input-group-addon primary" data-toggle="modal" data-target="#add-user-modal">
+			<i class="glyphicon glyphicon-plus"></i> 
+			<span>Add User</span>
+		</a> -->
+	</div>
+	<div class="table-responsive">
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th class="text-center table-number">#</th>
+					<th class="col-md-2 table-firstname"><a href="" ng-click="orderByField='firstname'; reverseSort = !reverseSort">First Name</a></th>
+					<th class="col-md-2 table-lastname"><a href="" ng-click="orderByField='lastname'; reverseSort = !reverseSort">Last Name</a></th>
+					<th class="col-md-2 table-username"><a href="" ng-click="orderByField='username'; reverseSort = !reverseSort">Username</a></th>
+					<th class="col-md-2 table-email"><a href="" ng-click="orderByField='email'; reverseSort = !reverseSort">Email Address</a></th>
+					<!-- <th class="col-md-2 table-save"><a href="" ng-click="show = !show"><i class="glyphicon glyphicon-plus"></i> Add User</a></th> -->
+					<th class="col-md-2"></th>
+					<th class="col-md-2 table-addUser"><a href="" ng-click="ctrl.add()"><i class="glyphicon glyphicon-plus"></i> Add User</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr ng-show="show">
+					<td>-</td>
+					<td class=""><input type="text" class="form-control input-sm" placeholder="First Name" ng-model="ctrl.data.firstname"></td>
+					<td class=""><input type="text" class="form-control input-sm" placeholder="Last Name" ng-model="ctrl.data.lastname"></td>
+					<td class=""><input type="text" class="form-control input-sm" placeholder="Username" ng-model="ctrl.data.username"></td>
+					<td class=""><input type="email" class="form-control input-sm" placeholder="Email Address" ng-model="ctrl.data.email"></td>
+					<td class=""><input type="password" class="form-control input-sm" placeholder="Password" ng-model="ctrl.data.password"></td>
+					<td class="">
+						<div class="row">
+							<div class="col-md-6">
+								<select class="form-control input-sm" ng-model="ctrl.data.rights" ng-init="ctrl.data.rights = 1">
+									<option value="0">User</option>
+									<option value="1">Admin</option>
+								</select>
+							</div>
+							<div class="col-md-2">
+								<input type="submit" class="btn btn-primary btn-sm" value="Add" ng-click="ctrl.addUser(); show = !show">
+							</div>
+						</div>
+					</td>
+				</tr> -->
+				<tr class="" ng-repeat="user in ctrl.users | filter: searchKeyword | orderBy:orderByField:reverseSort">
+					<th class="">{{ $index + 1 }}</th>
+					<td class="">{{ user.firstname }}</td>
+					<td class="">{{ user.lastname }}</td>
+					<td class="">{{ user.username }}</td>
+					<td class="">{{ user.email }}</td>
+					<td class=""></td>
+					<td class="">
+						<div class="">
+							<a href="" ng-click="ctrl.viewUser(user)"><i class="glyphicon glyphicon-eye-open col-md-2"></i></a>
+							<a href="" ng-click="ctrl.edit(user)"><i class="glyphicon glyphicon-edit col-md-2"></i></a>
+							<a href="" ng-click="ctrl.deleteUser(user, $index)"><i class="glyphicon glyphicon-remove col-md-2"></i></a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- <div class="list-group">
+	<div ng-repeat="user in ctrl.users">
+		<a href=""><span class="list-group-item">{{ user.firstname }} {{ user.lastname}} <br> {{ user.username }}</span></a>
+	</div>
+</div> -->
+
+<!-- Start of Add User Modal -->
+
+<!-- <div class="modal fade" id="add-user-modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header modal-header-primary">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">User Details</h4>
+			</div>
+			<form class="form-horizontal" ng-submit="ctrl.addUser(); ctrl.listUsers()" method="post">
+				<div class="modal-body">
+						<div class="form-group">
+							<label for="fname" class="col-md-4 control-label">First Name</label>
+							<div class="col-md-7">
+								<input type="text" name="firstname" class="form-control" id="fname" placeholder="First Name" required ng-model="ctrl.data.firstname">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="lname" class="col-md-4 control-label">Last Name</label>
+							<div class="col-md-7">
+								<input type="text" name="lastname" class="form-control" id="lname" placeholder="Last Name" required ng-model="ctrl.data.lastname">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="uname" class="col-md-4 control-label">Username</label>
+							<div class="col-md-7">
+								<input type="text" name="username" class="form-control" id="uname" placeholder="Username" ng-model="ctrl.data.username">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="mail" class="col-md-4 control-label">Email Address</label>
+							<div class="col-md-7">
+								<input type="email" name="email" class="form-control" id="mail" placeholder="Email Address" required ng-model="ctrl.data.email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="pass" class="col-md-4 control-label">Password</label>
+							<div class="col-md-7">
+								<input type="password" name="password" class="form-control" id="pass" placeholder="Password" required ng-model="ctrl.data.password">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="rights" class="col-md-4 control-label">Admin Rights</label>
+							<div class="col-md-7">
+								<select name="rights" class="form-control" id="rights" required ng-model="ctrl.data.rights">
+									<option selected value="0">User</option>
+									<option value="1">Admin</option>
+								</select>
+							</div>
+						</div>
+						<div class="text-center">
+							<span class="">{{ ctrl.data.rights }}</span>
+						</div>
+				</div>
+				<div class="modal-footer">
+					<div class="text-right">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div> -->
+
+<!-- End of Add User Modal -->
